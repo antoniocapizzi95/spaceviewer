@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'antoniocapizzi95/node-python:v1.0'
-            args '-p 3000:3000 --name production'
+            image 'node:6-alpine'
+            args '-p 3001:3001 --name staging'
             }
         }
         environment {
