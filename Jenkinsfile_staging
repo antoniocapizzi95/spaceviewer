@@ -13,13 +13,11 @@ pipeline {
                 steps {
                     sh 'npm install'
                     //slackSend color: 'good', message: 'Build done'
-                    sh 'chmod -R 777 /jenkins'
                 }
             }
              stage('Test') {
                 steps {
-                    //sh './jenkins/scripts/test.sh'
-                    sh 'echo ciao'
+                    sh 'chmod +x ./jenkins/scripts/test.sh'
                 }
              }
              stage('Deliver') {
