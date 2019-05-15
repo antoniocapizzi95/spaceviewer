@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import TypoGraphy from '@material-ui/core/Typography';
 //import ListItemIcon from '@material-ui/core/ListItemIcon';
-import { Home, Book, AccountBox } from '@material-ui/icons';
+//import { Home, Book, AccountBox } from '@material-ui/icons';
 
 class NavBar extends Component {
 
@@ -23,20 +23,20 @@ class NavBar extends Component {
 
                     <ListItemText inset onClick={this.handleClick}>
                         <TypoGraphy color="inherit" variant="title">
-                            Home <Home/>
+                            Home
                         </TypoGraphy>
                     </ListItemText>
 
 
                     <ListItemText inset>
                         <TypoGraphy color="inherit" variant="title">
-                            APOD <Book/>
+                            APOD
                         </TypoGraphy>
                     </ListItemText>
 
                     <ListItemText inset>
                         <TypoGraphy color="inherit" variant="title">
-                            Asteroids <AccountBox/>
+                            Asteroids
                         </TypoGraphy>
                     </ListItemText>
                 </ListItem>
