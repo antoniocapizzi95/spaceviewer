@@ -30,13 +30,13 @@ class NavBar extends Component {
 
                     <ListItemText inset>
                         <TypoGraphy color="inherit" variant="title">
-                            Posts <Book/>
+                            APOD <Book/>
                         </TypoGraphy>
                     </ListItemText>
 
                     <ListItemText inset>
                         <TypoGraphy color="inherit" variant="title">
-                            Contact <AccountBox/>
+                            Asteroids <AccountBox/>
                         </TypoGraphy>
                     </ListItemText>
                 </ListItem>

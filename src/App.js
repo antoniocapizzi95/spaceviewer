@@ -13,7 +13,7 @@ class App extends Component {
               <TypoGraphy variant="title"
                           color="inherit"
               >
-                My header
+                Space Viewer
               </TypoGraphy>
               <NavBar></NavBar>
             </Toolbar>
