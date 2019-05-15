@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:6-alpine'
+            image 'antoniocapizzi95/node-python:v1.0'
             args '-p 3000:3000 --name production'
             }
         }
