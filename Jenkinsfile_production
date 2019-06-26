@@ -13,7 +13,6 @@ pipeline {
                 steps {
                     sh 'npm install'
                     sh 'chmod -R 777 jenkins'
-                    //slackSend color: 'good', message: 'Build done'
                 }
             }
              stage('Test') {
@@ -24,9 +23,21 @@ pipeline {
              stage('Deliver') {
                          steps {
                              sh './jenkins/scripts/deliver.sh'
+                             slackSend color: 'good', message: 'SpaceViewer: New version has been delivered in production'
                              input message: 'Finished using the web site? (Click "Proceed" to continue)'
                              sh './jenkins/scripts/kill.sh'
                          }
                      }
+        }
+        post {
+            success {
+                slackSend color: 'good', message: 'SpaceViewer: Build in production success'
+            }
+            failure {
+                slackSend color: 'good', message: 'SpaceViewer: Build in production failed'
+            }
+            aborted {
+               slackSend color: 'good', message: 'SpaceViewer: Build in production failed'
+             }
         }
 }
