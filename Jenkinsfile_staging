@@ -24,7 +24,7 @@ pipeline {
              stage('Deliver') {
                          steps {
                              sh './jenkins/scripts/deliver_staging.sh'
-                             input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                             input message: 'Finished using the web site? (Click "Proceed" to continue)', id: 'stagingJob'
                              sh './jenkins/scripts/kill.sh'
                          }
                      }
