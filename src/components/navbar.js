@@ -40,7 +40,6 @@ class NavBar extends Component {
                         </TypoGraphy>
                     </ListItemText>
                 </ListItem>
-
             </List>
         );
     }
