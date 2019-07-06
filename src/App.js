@@ -3,6 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar'
 import TypoGraphy from '@material-ui/core/Typography';
 import NavBar from './components/navbar.js';
+import Apod from './components/apod/apod.js'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
                 Space Viewer
               </TypoGraphy>
               <NavBar></NavBar>
+                <Apod></Apod>
             </Toolbar>
           </AppBar>
 

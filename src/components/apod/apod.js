@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DateInput from "./components/apod/DateInput";
+import DateInput from "./components/apod/DateInput.js";
 import Photo from "./components/apod/Photo.js";
 
 class Apod extends Component {
