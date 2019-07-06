@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import DateInput from "./components/apod/DateInput.js";
-import Photo from "./components/apod/Photo.js";
+import DateInput from "./DateInput.js";
+import Photo from "./Photo.js";
 
 class Apod extends Component {
     state = {
         date: "",
-        photo: ""
+        photo: "",
+        key: ""
     };
     changeDate = e => {
         e.preventDefault();
@@ -14,13 +15,19 @@ class Apod extends Component {
         this.setState({ date: dateFromInput });
         this.getPhoto(dateFromInput);
     };
+    getKey() {
+        fetch(`http://devopsresearch.tk:5001`)
+            .then(response => response.json())
+            .then(key => this.setState({ key: key }));
+    }
     componentDidMount() {
-        fetch(`https://api.nasa.gov/planetary/apod?api_key=`)
+        this.getKey()
+        fetch(`https://api.nasa.gov/planetary/apod?api_key=${this.state.key.key}`)
             .then(response => response.json())
             .then(json => this.setState({ photo: json }));
     }
     getPhoto = date => {
-        fetch(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=`)
+        fetch(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=${this.state.key.key}`)
             .then(response => response.json())
             .then(photoData => this.setState({ photo: photoData }));
     };

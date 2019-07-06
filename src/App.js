@@ -16,11 +16,11 @@ class App extends Component {
               >
                 Space Viewer
               </TypoGraphy>
-              <NavBar></NavBar>
-                <Apod></Apod>
+              <NavBar>
+              </NavBar>
             </Toolbar>
           </AppBar>
-
+            <Apod></Apod>
         </div>
     );
   }
