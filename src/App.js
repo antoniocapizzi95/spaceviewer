@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import TypoGraphy from '@material-ui/core/Typography';
 import Apod from './components/apod/apod.js'
 import Home from './components/home.js'
+import Asteroids from './components/asteroids/asteroids.js'
 import {
   Route,
   NavLink,
@@ -45,16 +46,17 @@ class App extends Component {
 
                       <ListItemText inset>
                         <TypoGraphy color="inherit" variant="title">
-                          Asteroids
+                          <NavLink to="/asteroids"> Asteroids </NavLink>
                         </TypoGraphy>
                       </ListItemText>
                     </ListItem>
                   </List>
               </Toolbar>
             </AppBar>
-            <div className="content">
-              <Route path="/" component={Home}/>
+            <div className="content padd">
+              <Route exact path="/" component={Home}/>
               <Route path="/apod" component={Apod}/>
+              <Route path="/asteroids" component={Asteroids}/>
             </div>
           </HashRouter>
         </div>
