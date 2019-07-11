@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DateInput from "./DateInput.js";
 
 class Asteroids extends Component {
 
@@ -7,8 +8,9 @@ class Asteroids extends Component {
             <div>
                 <h1>Asteroids</h1>
                 <div>
-                    Welcome to SpaceViewer
+
                 </div>
+                <DateInput></DateInput>
             </div>
         );
     }
