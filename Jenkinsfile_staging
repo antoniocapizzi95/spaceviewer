@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'antoniocapizzi95/node-python:v1.0'
+            image 'node:8-alpine'
             args '-p 3001:3001 --name staging'
             }
         }
