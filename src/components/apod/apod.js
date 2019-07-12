@@ -16,19 +16,18 @@ class Apod extends Component {
         this.getPhoto(dateFromInput);
     };
     getFirstApod() {
-        fetch(`https://api.nasa.gov/planetary/apod?api_key=${this.state.key.key}`)
+        fetch(`https://api.nasa.gov/planetary/apod?api_key=${this.state.key}`)
             .then(response => response.json())
             .then(json => this.setState({ photo: json }));
     }
     componentDidMount() {
         fetch(`http://devopsresearch.tk:5001`)
             .then(response => response.json())
-            .then(key => this.setState({ key: key }))
+            .then(key => this.setState({ key: key.key }))
             .then(first => this.getFirstApod());
-
     }
     getPhoto = date => {
-        fetch(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=${this.state.key.key}`)
+        fetch(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=${this.state.key}`)
             .then(response => response.json())
             .then(photoData => this.setState({ photo: photoData }));
     };
