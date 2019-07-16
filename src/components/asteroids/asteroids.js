@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DateInput from "./DateInput.js";
-import ShowData from "./ShowData.js"
+import ShowData from "./ShowData.js";
+import Grid from '@material-ui/core/Grid';
 
 class Asteroids extends Component {
     state = {
@@ -46,12 +47,13 @@ class Asteroids extends Component {
                 <h1>Asteroids</h1>
                 <div>
                     <DateInput changeDate={this.changeDate}></DateInput>
-
-                    {arr.map((value, index) => {
-                        return value.map((v, i) => {
-                            return <ShowData asteroids = {v}></ShowData>
-                        })
-                    })}
+                    <Grid container direction="row">
+                        {arr.map((value, index) => {
+                            return value.map((v, i) => {
+                                return <ShowData asteroids = {v}></ShowData>
+                            })
+                        })}
+                    </Grid>
 
                 </div>
 

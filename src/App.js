@@ -13,6 +13,7 @@ import {
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
+import Button from '@material-ui/core/Button';
 
 
 class App extends Component {
@@ -33,20 +34,26 @@ class App extends Component {
 
                       <ListItemText inset>
                         <TypoGraphy color="inherit" variant="title">
-                          <NavLink to="/"> Home </NavLink>
+                            <NavLink to="/">
+                                <Button> <div className="white"> Home </div> </Button>
+                            </NavLink>
                         </TypoGraphy>
                       </ListItemText>
 
 
                       <ListItemText inset>
                         <TypoGraphy color="inherit" variant="title">
-                          <NavLink to="/apod"> APOD </NavLink>
+                          <NavLink to="/apod">
+                              <Button> <div className="white">APOD</div> </Button>
+                          </NavLink>
                         </TypoGraphy>
                       </ListItemText>
 
                       <ListItemText inset>
                         <TypoGraphy color="inherit" variant="title">
-                          <NavLink to="/asteroids"> Asteroids </NavLink>
+                          <NavLink to="/asteroids">
+                              <Button> <div className="white">Asteroids</div> </Button>
+                          </NavLink>
                         </TypoGraphy>
                       </ListItemText>
                     </ListItem>
