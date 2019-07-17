@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar'
 import TypoGraphy from '@material-ui/core/Typography';
-import Apod from './components/apod/apod.js'
-import Home from './components/home.js'
-import Asteroids from './components/asteroids/asteroids.js'
+import Apod from './components/apod/apod.js';
+import Home from './components/home.js';
+import Asteroids from './components/asteroids/asteroids.js';
+import MarsRover from './components/marsrover/marsrover.js';
 import {
   Route,
   NavLink,
@@ -56,6 +57,13 @@ class App extends Component {
                           </NavLink>
                         </TypoGraphy>
                       </ListItemText>
+                      <ListItemText inset>
+                        <TypoGraphy color="inherit" variant="title">
+                          <NavLink to="/marsrover">
+                            <Button> <div className="white">Mars Rover Images</div> </Button>
+                          </NavLink>
+                        </TypoGraphy>
+                      </ListItemText>
                     </ListItem>
                   </List>
               </Toolbar>
@@ -64,6 +72,7 @@ class App extends Component {
               <Route exact path="/" component={Home}/>
               <Route path="/apod" component={Apod}/>
               <Route path="/asteroids" component={Asteroids}/>
+              <Route path="/marsrover" component={MarsRover}/>
             </div>
           </HashRouter>
         </div>
