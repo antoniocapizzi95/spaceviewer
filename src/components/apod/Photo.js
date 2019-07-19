@@ -12,7 +12,7 @@ const Photo = props => (
         <Card style={marg}>
             <CardContent>
                 <h3>{props.photo.title}</h3>
-                <img src={props.photo.url} alt={props.photo.title} />
+                <img className="imgstyleapod" src={props.photo.url} alt={props.photo.title} />
             </CardContent>
         </Card>
         <Card>

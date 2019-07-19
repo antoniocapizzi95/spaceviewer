@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Input from "./Input.js";
 import Grid from '@material-ui/core/Grid';
-import ShowData from "../asteroids/ShowData";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 class Marsrover extends Component {
     state = {
@@ -41,11 +43,23 @@ class Marsrover extends Component {
         return (
             <div>
                 <h1>Mars Rover Images</h1>
+                <Typography variant="h6" component="h3">
+                    Choose a Rover, a Camera and the number of the day on surface of Mars to see the photos taken that day by the Rover
+                </Typography>
                 <div>
                     <Input chooseData={this.chooseData}></Input>
                     <Grid container direction="row">
                         {arr.map((value, index) => {
-                            return  <img src={value.img_src}></img>
+                            return  ( <Card style={{margin: "20px"}}>
+                                            <CardContent>
+                                                <img className="imgstyle" src={value.img_src}></img>
+                                                <Typography variant="h6" component="h3">
+                                                    Date: {value.earth_date}
+                                                </Typography>
+                                            </CardContent>
+                                    </Card>
+
+                            )
                             })
                         }
                     </Grid>

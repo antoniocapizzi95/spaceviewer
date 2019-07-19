@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DateInput from "./DateInput.js";
 import ShowData from "./ShowData.js";
 import Grid from '@material-ui/core/Grid';
+import Typography from "@material-ui/core/Typography";
 
 class Asteroids extends Component {
     state = {
@@ -45,6 +46,9 @@ class Asteroids extends Component {
         return (
             <div>
                 <h1>Asteroids</h1>
+                <Typography variant="h6" component="h3">
+                    Choose a start and end date to see which asteroids have passed near the earth in the selected period.
+                </Typography>
                 <div>
                     <DateInput changeDate={this.changeDate}></DateInput>
                     <Grid container direction="row">

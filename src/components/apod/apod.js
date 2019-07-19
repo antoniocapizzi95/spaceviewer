@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DateInput from "./DateInput.js";
 import Photo from "./Photo.js";
+import Typography from "@material-ui/core/Typography";
 
 class Apod extends Component {
     state = {
@@ -35,6 +36,9 @@ class Apod extends Component {
         return (
             <div>
                 <h1>NASA's Astronomy Picture of the Day</h1>
+                <Typography variant="h6" component="h3">
+                    Choose a date to see the "NASA's Astronomy Picture of the Day". By default you will see today's photo.
+                </Typography>
                 <DateInput changeDate={this.changeDate}/>
                 <Photo photo={this.state.photo}/>
             </div>

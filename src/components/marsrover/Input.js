@@ -35,8 +35,8 @@ const useStyles = makeStyles(theme => ({
 export default function SimpleSelect(props) {
     const classes = useStyles();
     const [values, setValues] = React.useState({
-        rover: '',
-        camera: '',
+        rover: 'curiosity',
+        camera: 'FHAZ',
     });
 
     const inputLabel = React.useRef('');
