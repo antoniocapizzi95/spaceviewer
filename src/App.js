@@ -6,6 +6,7 @@ import Apod from './components/apod/apod.js';
 import Home from './components/home.js';
 import Asteroids from './components/asteroids/asteroids.js';
 import MarsRover from './components/marsrover/marsrover.js';
+import ImagesLibrary from './components/imageslibrary/imageslibrary.js';
 import {
   Route,
   NavLink,
@@ -57,10 +58,19 @@ class App extends Component {
                           </NavLink>
                         </TypoGraphy>
                       </ListItemText>
+
                       <ListItemText inset>
                         <TypoGraphy color="inherit" variant="title">
                           <NavLink to="/marsrover">
                             <Button> <div className="white">Mars Rover Images</div> </Button>
+                          </NavLink>
+                        </TypoGraphy>
+                      </ListItemText>
+
+                      <ListItemText inset>
+                        <TypoGraphy color="inherit" variant="title">
+                          <NavLink to="/imageslibrary">
+                            <Button> <div className="white">Images Library</div> </Button>
                           </NavLink>
                         </TypoGraphy>
                       </ListItemText>
@@ -73,6 +83,7 @@ class App extends Component {
               <Route path="/apod" component={Apod}/>
               <Route path="/asteroids" component={Asteroids}/>
               <Route path="/marsrover" component={MarsRover}/>
+              <Route path="/imageslibrary" component={ImagesLibrary}/>
             </div>
           </HashRouter>
         </div>
