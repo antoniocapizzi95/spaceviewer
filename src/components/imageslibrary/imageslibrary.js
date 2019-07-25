@@ -1,23 +1,25 @@
 import React, { Component } from "react";
 import Input from "./Input.js";
-//import ShowData from "./ShowData.js";
+import ShowData from "./ShowData.js";
 import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 class ImagesLibrary extends Component {
     state = {
         word: '',
         images: {}
     };
-    changeDate = e => {
+    search = e => {
         e.preventDefault();
         console.log(e.target);
         let wordFromInput = e.target[0].value;
         this.state.word = wordFromInput;
         this.setState({ word: wordFromInput });
-        //this.setState({ dateEnd: dateFromInputEnd });
+
         this.getImages(wordFromInput);
-        //this.getAsteroids("2015-09-07", "2015-09-08");
+
     };
     /*componentDidMount() {
         fetch(`http://devopsresearch.tk:5001`)
@@ -28,11 +30,30 @@ class ImagesLibrary extends Component {
     getImages(word) {
         fetch(`https://images-api.nasa.gov/search?q=${word}&media_type=image`)
             .then(response => response.json())
-            .then(imagesData => this.setState({ images: imagesData.items }))
-            .then(ast => console.log(this.state.images));
+            .then(imagesData => this.setState({ images: imagesData.collection.items }))
+            .then(img => this.fixData(this.state.images));
+            //.then(img => console.log(this.state.images));
     };
+    fixData(img) {
+        if(img.length > 20) {
+            img = img.slice(0, 20);
+        }
+        var newimg = [];
+        /*for(var i in img){
+            var link = i.links[0].href;
+            var desc = i.data[0].description;
+            newimg.append({img_link: link, description: desc});
+        }*/
+        img.forEach(function(element) {
+            var link = element.links[0].href;
+            var desc = element.data[0].description;
+            newimg.push({img_link: link, description: desc});
+        });
+        console.log(newimg);
+        this.setState({images: newimg})
+    }
     render() {
-        var arr = [];
+       var arr = [];
         var json = this.state.images;
         Object.keys(json).forEach(function(key) {
             arr.push(json[key]);
@@ -44,15 +65,16 @@ class ImagesLibrary extends Component {
                     Choose a start and end date to see which asteroids have passed near the earth in the selected period.
                 </Typography>
                 <div>
-                   <Input changeDate={this.changeDate}></Input>
+                   <Input search={this.search}></Input>
                     <Grid container direction="row">
                         {arr.map((value, index) => {
-                            return value.map((v, i) => {
-                                return <div asteroids = {v}></div>
-                            })
-                        })}
-                    </Grid>
+                            return  (
+                                <ShowData images={value}></ShowData>
 
+                            )
+                        })
+                        }
+                    </Grid>
                 </div>
 
             </div>

@@ -50,8 +50,13 @@ export default function SimpleSelect(props) {
     }
 
     return (
-        <form className={classes.root} autoComplete="off" onSubmit={props.chooseData}>
+        <form className={classes.root} autoComplete="off" onSubmit={props.search}>
             <div>
+                <TextField
+                    id="sol"
+                    label="Enter a word"
+                    className={classes.formControl}
+                />
                 <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="age-simple">Rover</InputLabel>
                     <Select
@@ -67,25 +72,9 @@ export default function SimpleSelect(props) {
                         <MenuItem value={"spirit"}>Spirit</MenuItem>
                     </Select>
                 </FormControl>
-                <FormControl className={classes.formControl}>
-                    <InputLabel htmlFor="age-helper">Camera</InputLabel>
-                    <Select
-                        value={values.camera}
-                        onChange={handleChange}
-                        input={<Input name="camera" id="camera-id" />}
-                    >
-                        <MenuItem value={"FHAZ"}>Front Hazard Avoidance Camera</MenuItem>
-                        <MenuItem value={"RHAZ"}>Rear Hazard Avoidance Camera</MenuItem>
-                        <MenuItem value={"NAVCAM"}>Navigation Camera</MenuItem>
-                    </Select>
 
-                </FormControl>
 
-                <TextField
-                    id="sol"
-                    label="Enter the day on Mars"
-                    className={classes.formControl}
-                />
+
 
                 <Button variant="contained" type="submit" style={marg} className={hei}>
                     Ok
