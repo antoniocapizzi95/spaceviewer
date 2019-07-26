@@ -39,11 +39,6 @@ class ImagesLibrary extends Component {
             img = img.slice(0, 20);
         }
         var newimg = [];
-        /*for(var i in img){
-            var link = i.links[0].href;
-            var desc = i.data[0].description;
-            newimg.append({img_link: link, description: desc});
-        }*/
         img.forEach(function(element) {
             var link = element.links[0].href;
             var desc = element.data[0].description;
@@ -62,7 +57,7 @@ class ImagesLibrary extends Component {
             <div>
                 <h1>Images Library</h1>
                 <Typography variant="h6" component="h3">
-                    Choose a start and end date to see which asteroids have passed near the earth in the selected period.
+                    Enter a word to search Images from NASA's Library about it
                 </Typography>
                 <div>
                    <Input search={this.search}></Input>
@@ -70,7 +65,6 @@ class ImagesLibrary extends Component {
                         {arr.map((value, index) => {
                             return  (
                                 <ShowData images={value}></ShowData>
-
                             )
                         })
                         }

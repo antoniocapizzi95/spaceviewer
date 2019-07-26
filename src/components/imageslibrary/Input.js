@@ -57,25 +57,6 @@ export default function SimpleSelect(props) {
                     label="Enter a word"
                     className={classes.formControl}
                 />
-                <FormControl className={classes.formControl}>
-                    <InputLabel htmlFor="age-simple">Rover</InputLabel>
-                    <Select
-                        value={values.rover}
-                        onChange={handleChange}
-                        inputProps={{
-                            name: 'rover',
-                            id: 'rover-id',
-                        }}
-                    >
-                        <MenuItem value={"curiosity"}>Curiosity</MenuItem>
-                        <MenuItem value={"opportunity"}>Opportunity</MenuItem>
-                        <MenuItem value={"spirit"}>Spirit</MenuItem>
-                    </Select>
-                </FormControl>
-
-
-
-
                 <Button variant="contained" type="submit" style={marg} className={hei}>
                     Ok
                 </Button>

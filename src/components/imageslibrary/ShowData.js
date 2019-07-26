@@ -5,16 +5,23 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const marg = {
+
+const dim = {
+    height: 'auto',
+    width: '700px',
     margin: '20px'
+};
+const dimImage = {
+    height: 'auto',
+    maxWidth: '100%'
 };
 
 const ShowData = props => (
 
-    <Card style={marg} direction='row'>
+    <Card style={dim} direction='row'>
         <CardContent>
-            <img src={props.images.img_link}></img>
-            <Typography variant="h6" component="h3">
+            <img className={dimImage} src={props.images.img_link}></img>
+            <Typography variant="body2" gutterBottom>
                 Description: {props.images.description}
             </Typography>
         </CardContent>
