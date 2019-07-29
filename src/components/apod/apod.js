@@ -7,7 +7,8 @@ class Apod extends Component {
     state = {
         date: "",
         photo: "",
-        key: ""
+        key: "",
+        showPhoto: true
     };
     changeDate = e => {
         e.preventDefault();
@@ -19,7 +20,8 @@ class Apod extends Component {
     getFirstApod() {
         fetch(`https://api.nasa.gov/planetary/apod?api_key=${this.state.key}`)
             .then(response => response.json())
-            .then(json => this.setState({ photo: json }));
+            .then(json => this.setState({ photo: json }))
+            .then(pho => console.log(this.state.photo));
     }
     componentDidMount() {
         fetch(`http://devopsresearch.tk:5001`)
@@ -30,8 +32,18 @@ class Apod extends Component {
     getPhoto = date => {
         fetch(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=${this.state.key}`)
             .then(response => response.json())
-            .then(photoData => this.setState({ photo: photoData }));
+            .then(photoData => this.setState({ photo: photoData }))
+            .then(pho => console.log(this.state.photo))
+            .then(phot => this.checkPhoto(this.state.photo));
     };
+    checkPhoto(pho) {
+        if(pho.code == 400) {
+            this.setState({showPhoto: false});
+        }
+        else {
+            this.setState({showPhoto: true});
+        }
+    }
     render() {
         return (
             <div>
@@ -40,7 +52,8 @@ class Apod extends Component {
                     Choose a date to see the "NASA's Astronomy Picture of the Day". By default you will see today's photo.
                 </Typography>
                 <DateInput changeDate={this.changeDate}/>
-                <Photo photo={this.state.photo}/>
+                {this.state.showPhoto ? <Photo photo={this.state.photo}/> : <Typography variant="h7" component="h4">No photo available for day selected</Typography>}
+
             </div>
         );
     }

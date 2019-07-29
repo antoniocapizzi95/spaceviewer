@@ -16,22 +16,15 @@ class Asteroids extends Component {
         console.log(e.target);
         let dateFromInputInit = e.target[0].value;
         let dateFromInputEnd = e.target[1].value;
-        this.state.dateInit = dateFromInputInit
-        this.state.dateEnd = dateFromInputEnd
-        //this.setState({ dateInit: dateFromInputInit, dateEnd: dateFromInputEnd });
-        //this.setState({ dateEnd: dateFromInputEnd });
-        this.getAsteroids(this.state.dateInit, this.state.dateEnd);
-        //this.getAsteroids("2015-09-07", "2015-09-08");
+        this.setState({dateInit: dateFromInputInit, dateEnd: dateFromInputEnd});
+        this.getAsteroids(dateFromInputInit, dateFromInputEnd);
     };
     componentDidMount() {
         fetch(`http://devopsresearch.tk:5001`)
             .then(response => response.json())
-            .then(key => this.setState({ key: key.key }))
-            //.then(first => this.getFirstApod());
+            .then(key => this.setState({ key: key.key }));
     }
     getAsteroids (dateInit, dateEnd) {
-        //console.log(dateInit)
-        console.log(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${dateInit}&end_date=${dateEnd}&api_key=${this.state.key}`)
         fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${dateInit}&end_date=${dateEnd}&api_key=${this.state.key}`)
             .then(response => response.json())
             .then(astData => this.setState({ asteroids: astData.near_earth_objects }))
@@ -40,9 +33,13 @@ class Asteroids extends Component {
     render() {
         var arr = [];
         var json = this.state.asteroids;
-        Object.keys(json).forEach(function(key) {
-            arr.push(json[key]);
-        });
+        if(json != undefined) {
+            Object.keys(json).forEach(function(key) {
+                arr.push(json[key]);
+                console.log(json[key]);
+            });
+        }
+
         return (
             <div>
                 <h1>Asteroids</h1>

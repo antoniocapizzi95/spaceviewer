@@ -3,38 +3,33 @@ import Input from "./Input.js";
 import ShowData from "./ShowData.js";
 import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 
 class ImagesLibrary extends Component {
     state = {
         word: '',
-        images: {}
+        images: {},
+        showImages: true
     };
     search = e => {
         e.preventDefault();
         console.log(e.target);
         let wordFromInput = e.target[0].value;
-        this.state.word = wordFromInput;
         this.setState({ word: wordFromInput });
-
         this.getImages(wordFromInput);
-
     };
-    /*componentDidMount() {
-        fetch(`http://devopsresearch.tk:5001`)
-            .then(response => response.json())
-            .then(key => this.setState({ key: key.key }))
-        //.then(first => this.getFirstApod());
-    }*/
+
     getImages(word) {
         fetch(`https://images-api.nasa.gov/search?q=${word}&media_type=image`)
             .then(response => response.json())
             .then(imagesData => this.setState({ images: imagesData.collection.items }))
             .then(img => this.fixData(this.state.images));
-            //.then(img => console.log(this.state.images));
     };
     fixData(img) {
+        if(img.length == 0) {
+            this.setState({showImages: false});
+        } else {
+            this.setState({showImages: true});
+        }
         if(img.length > 20) {
             img = img.slice(0, 20);
         }
@@ -49,10 +44,13 @@ class ImagesLibrary extends Component {
     }
     render() {
        var arr = [];
-        var json = this.state.images;
-        Object.keys(json).forEach(function(key) {
-            arr.push(json[key]);
-        });
+       var json = this.state.images;
+       if(json.length > 0){
+           Object.keys(json).forEach(function(key) {
+               arr.push(json[key]);
+           });
+       }
+
         return (
             <div>
                 <h1>Images Library</h1>
@@ -61,14 +59,16 @@ class ImagesLibrary extends Component {
                 </Typography>
                 <div>
                    <Input search={this.search}></Input>
-                    <Grid container direction="row">
-                        {arr.map((value, index) => {
-                            return  (
-                                <ShowData images={value}></ShowData>
-                            )
-                        })
-                        }
-                    </Grid>
+                    {this.state.showImages ?
+                        (<Grid container direction="row">
+                            {arr.map((value, index) => {
+                                    return  (
+                                        <ShowData images={value}></ShowData>
+                                    )
+                                })
+                            }
+                        </Grid>): <Typography variant="h7" component="h4">No images found</Typography>}
+
                 </div>
 
             </div>
