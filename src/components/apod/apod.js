@@ -37,7 +37,7 @@ class Apod extends Component {
             .then(phot => this.checkPhoto(this.state.photo));
     };
     checkPhoto(pho) {
-        if(pho.code == 400) {
+        if(pho.code === 400) {
             this.setState({showPhoto: false});
         }
         else {

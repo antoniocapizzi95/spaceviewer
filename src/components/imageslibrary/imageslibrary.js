@@ -25,7 +25,7 @@ class ImagesLibrary extends Component {
             .then(img => this.fixData(this.state.images));
     };
     fixData(img) {
-        if(img.length == 0) {
+        if(img.length === 0) {
             this.setState({showImages: false});
         } else {
             this.setState({showImages: true});

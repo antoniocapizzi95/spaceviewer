@@ -11,7 +11,8 @@ class Marsrover extends Component {
         camera: "",
         photos: [],
         sol: '',
-        key: ""
+        key: "",
+        showPhotos: true
     };
     chooseData = e => {
         e.preventDefault();
@@ -31,7 +32,15 @@ class Marsrover extends Component {
         fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${this.state.key}`)
             .then(response => response.json())
             .then(photosData => this.setState({ photos: photosData.photos }))
-            .then(pho => console.log(this.state.photos));
+            .then(pho => this.checkPhotos(this.state.photos));
+    };
+    checkPhotos(pho){
+        console.log(pho);
+      if(pho.length > 0) {
+          this.setState({showPhotos: true});
+      } else {
+          this.setState({showPhotos: false});
+      }
     };
     render() {
         var arr = [];
@@ -48,21 +57,24 @@ class Marsrover extends Component {
                 </Typography>
                 <div>
                     <Input chooseData={this.chooseData}></Input>
-                    <Grid container direction="row">
-                        {arr.map((value, index) => {
-                            return  ( <Card style={{margin: "20px"}}>
-                                            <CardContent>
-                                                <img className="imgstyle" src={value.img_src}></img>
-                                                <Typography variant="h6" component="h3">
-                                                    Date: {value.earth_date}
-                                                </Typography>
-                                            </CardContent>
+                    {this.state.showPhotos ?
+                        (<Grid container direction="row">
+                            {arr.map((value, index) => {
+                                return  ( <Card style={{margin: "20px"}}>
+                                        <CardContent>
+                                            <img className="imgstyle" src={value.img_src}></img>
+                                            <Typography variant="h6" component="h3">
+                                                Date: {value.earth_date}
+                                            </Typography>
+                                        </CardContent>
                                     </Card>
 
-                            )
+                                )
                             })
-                        }
-                    </Grid>
+                            }
+                        </Grid>)
+                        : <Typography variant="h7" component="h4">No photos found for the day selected</Typography>}
+
 
                 </div>
 
