@@ -11,6 +11,10 @@ body {
   color: white;
 }
 
+.blue{
+  color: #3f51b5;
+}
+
 .imgstyle {
   height: 600px;
   width: 800px;

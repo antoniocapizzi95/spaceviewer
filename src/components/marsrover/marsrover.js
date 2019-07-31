@@ -73,7 +73,7 @@ class Marsrover extends Component {
                             })
                             }
                         </Grid>)
-                        : <Typography variant="h7" component="h4">No photos found for the day selected</Typography>}
+                        : <Typography variant="h7" component="h4">No photos found for the data selected</Typography>}
 
 
                 </div>
