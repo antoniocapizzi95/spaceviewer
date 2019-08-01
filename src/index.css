@@ -26,3 +26,7 @@ body {
   max-width: 1600px;
   margin: 20px;
 }
+
+.margTop {
+  margin-top: 20px;
+}
