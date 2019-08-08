@@ -33,7 +33,7 @@ class Asteroids extends Component {
     render() {
         var arr = [];
         var json = this.state.asteroids;
-        if(json != undefined) {
+        if(json !== undefined) {
             Object.keys(json).forEach(function(key) {
                 arr.push(json[key]);
                 console.log(json[key]);

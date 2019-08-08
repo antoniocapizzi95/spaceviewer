@@ -28,20 +28,13 @@ class App extends Component {
                 <TypoGraphy variant="title"
                             color="inherit"
                 >
-                  Space Viewer
+                  <NavLink to="/">
+                    <Button> <div className="white"> Space Viewer </div> </Button>
+                  </NavLink>
                 </TypoGraphy>
 
                   <List component="nav">
                     <ListItem component="div">
-
-                      <ListItemText inset>
-                        <TypoGraphy color="inherit" variant="title">
-                            <NavLink to="/">
-                                <Button> <div className="white"> Home </div> </Button>
-                            </NavLink>
-                        </TypoGraphy>
-                      </ListItemText>
-
 
                       <ListItemText inset>
                         <TypoGraphy color="inherit" variant="title">

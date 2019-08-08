@@ -61,21 +61,18 @@ class Marsrover extends Component {
                         (<Grid container direction="row">
                             {arr.map((value, index) => {
                                 return  ( <Card style={{margin: "20px"}}>
-                                        <CardContent>
-                                            <img className="imgstyle" src={value.img_src}></img>
-                                            <Typography variant="h6" component="h3">
-                                                Date: {value.earth_date}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
-
+                                            <CardContent>
+                                                <img className="imgstyle" src={value.img_src}></img>
+                                                <Typography variant="h6" component="h3">
+                                                    Date: {value.earth_date}
+                                                </Typography>
+                                            </CardContent>
+                                        </Card>
                                 )
                             })
                             }
                         </Grid>)
                         : <Typography variant="h7" component="h4">No photos found for the data selected</Typography>}
-
-
                 </div>
 
             </div>

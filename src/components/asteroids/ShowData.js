@@ -24,11 +24,10 @@ const ShowData = props => (
             </Typography>
         </CardContent>
         <CardActions>
-            <Button size="small" href={props.asteroids.nasa_jpl_url}>Link</Button>
+            <Button size="small" href={props.asteroids.nasa_jpl_url} target="_blank">Link</Button>
         </CardActions>
 
     </Card>
 
 );
-
 export default ShowData;
